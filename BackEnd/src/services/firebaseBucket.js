@@ -9,7 +9,7 @@ const serviceAccount = JSON.parse(
 // Initialize the Firebase Admin SDK
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  storageBucket: 'gs://chat-13615.appspot.com'
+  storageBucket: process.env.STORAGE_BUCKET
 });
 
 export const bucket = admin.storage().bucket();
