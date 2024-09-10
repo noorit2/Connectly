@@ -46,7 +46,7 @@ jspm_packages/
 *.ntvs*
 *.njsproj
 *.sln
-
+*.json
 # OS generated files
 .DS_Store
 Thumbs.db
