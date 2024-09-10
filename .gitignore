@@ -56,3 +56,5 @@ Thumbs.db
 *.lock
 /serviceAccountKey.json
 /config/*
+BackEnd/src/config/serviceAccountKey.json
+
