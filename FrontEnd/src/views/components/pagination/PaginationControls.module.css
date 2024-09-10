@@ -1,0 +1,28 @@
+.container{
+display: flex;
+width: 100%;
+justify-content: center;
+align-items: center;
+    button{
+        all: unset;
+        margin: 0.2rem 0.4rem;
+        color: rgb(89, 89, 251);
+        cursor: pointer;
+    }
+    button:hover{
+
+    }
+    button:disabled{
+        color:#9E9E9E;        ;
+        cursor: not-allowed;
+    }
+    span{
+        display: inline-block;
+        padding: 0.3rem 0.7rem;
+        border: 1px solid #000;
+        color:#000;
+    }
+    p{
+        color: #606060;
+    }
+}

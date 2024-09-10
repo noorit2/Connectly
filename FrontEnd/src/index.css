@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  font-family: Poppins;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+:root{
+  --BoldStatement: PoppinsMedium;
+  --ThinStatement: PoppinsThin;
+  --LightStatement: PoppinsLight;
+}
+@font-face {
+  font-family:PoppinsLight ;
+  src: url(./assests/fonts/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: Poppins;
+  src: url(./assests/fonts/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: PoppinsThin;
+  src: url(./assests/fonts/Poppins-Thin.ttf);
+}
+@font-face {
+  font-family: PoppinsMedium;
+  src: url(./assests/fonts/Poppins-Black.ttf);
+}
+@font-face {
+  font-family: PoppinsBold;
+  src: url(./assests/fonts/Poppins-SemiBold.ttf);
+}
+p{
+  font-family: Poppins;
+}
+h1,h2,h3,h4,h5{
+  font-family: PoppinsBold;
+}

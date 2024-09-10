@@ -1,0 +1,41 @@
+.modalContainer{
+    position:fixed;
+    width: fit-content;
+    height: auto;
+    top:50%;
+    left:50%;
+    z-index: 14;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+    visibility: hidden;
+    
+}
+.backDrop{
+    position: absolute;
+  top:0;
+    z-index: 13;
+    background-color: #2c313652;
+    width: 100vw;
+    height: 100vh;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+
+}
+.backDrop.active{
+opacity: 1;
+visibility: visible;
+}
+.modalContainer.active{
+    animation: fadeOut 1s both;
+}
+@keyframes fadeOut {
+    from{
+        visibility: hidden;
+        opacity: 0;
+    }to{
+        opacity: 1;
+        visibility: visible;
+    }
+}
