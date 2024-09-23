@@ -8,11 +8,11 @@ import cors from 'cors';
 import pgSession from 'connect-pg-simple';
 import { pool } from './config/db';
 import { userRoutes } from './routes/userRoutes';
-import { errorMD } from './middlewares/errorMiddleware';
+import { errorHandler } from './middlewares/errorMiddleware';
 import { communityRoutes } from './routes/communityRoutes';
 
 // Initialize Express app
-export const app: Application = express();
+ const app: Application = express();
 const PgSession = pgSession(session);
 
 // Define session store
@@ -55,7 +55,7 @@ app.use('/users', userRoutes);
 app.use('/communities', communityRoutes);
 
 // Error handling middleware
-app.use(errorMD);
+app.use(errorHandler);
 
 export default app;
-export { sessionMiddleware };
+export { sessionMiddleware, app };

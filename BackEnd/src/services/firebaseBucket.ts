@@ -54,4 +54,28 @@ export const getBucket = async () => {
   return admin.storage().bucket();
 };
 
+// Firebase Service
+export const uploadToFirebase = async (file: Express.Multer.File): Promise<string> => {
+  const bucket = await getBucket();
+  const blob = bucket.file(`uploads/${Date.now()}-${file.originalname}`);
+  const blobStream = blob.createWriteStream({
+      metadata: {
+          contentType: file.mimetype
+      }
+  });
+
+  await new Promise<void>((resolve, reject) => {
+      blobStream.on('error', reject);
+      blobStream.on('finish', resolve);
+      blobStream.end(file.buffer);
+  });
+
+  const [url] = await blob.getSignedUrl({
+      action: 'read',
+      expires: '01-01-2025'
+  });
+
+  return url;
+};
+
 export { upload };

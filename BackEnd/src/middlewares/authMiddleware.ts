@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { User } from '../config/passport';
+import { User } from '../types/user';
 
 
 // Extend the Request interface to include user and isAuthenticated

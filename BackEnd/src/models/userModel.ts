@@ -2,13 +2,25 @@ import { pool } from "../config/db";
 import bcrypt from "bcrypt";
 
 const getAllUsers = async () => {
-    const result = await pool.query('SELECT * FROM users');
+    const result = await pool.query('SELECT (username,id,email) FROM users');
     return result.rows;
 };
 
-const getUserById = async (id: number) => {
+interface User  {
+    email:string,
+    password: string,
+    id:number,
+    picture?:string,
+    title?:string,
+    description?:string,
+    username?:string 
+};
+ 
+
+const getUserById = async (id: number): Promise<User | undefined> => {
     const result = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
-    return result.rows[0];
+    let user = result.rows[0];
+    return  user ? { id: user.id, email: user.email, password: user.password,...user } : null;
 };
 
 const getUserByIdWithCounts = async (id: number) => {
@@ -41,6 +53,12 @@ const getUserByIdWithCounts = async (id: number) => {
     `;
     const joinedCommunitiesCountResult = await pool.query(joinedCommunitiesCountQuery, [id]);
 
+    let userWithoutPassword={};
+
+    if (userResult.rows.length > 0) {
+        const { password, ...userWithoutPassword } = userResult.rows[0];
+    }
+
     return {
         user: userResult.rows[0],
         connectedCount: parseInt(connectedCountResult.rows[0].total, 10),
@@ -59,9 +77,10 @@ const createUser = async (user: { username: string; email: string; password: str
     return result.rows[0];
 };
 
-const findUserByEmail = async (email: string) => {
+const findUserByEmail = async (email: string): Promise<User | undefined>  => {
     const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
-    return result.rows[0];
+    let user = result.rows[0];
+    return  user ? { id: user.id, email: user.email, password: user.password} : undefined;
 };
 
 const countUnconnectedUsers = async (userId: number) => {

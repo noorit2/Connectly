@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
-import passport, { User } from "../config/passport";
+import passport from "../config/passport";
+import { User } from '../types/user';
 import { 
     createConnection, 
     createUser, 
@@ -13,10 +14,10 @@ import { ensureAuthenticated } from "../middlewares/authMiddleware";
 
 const router = express.Router(); 
 
+
 // Signin route
 router.post('/signin', (req: Request, res: Response, next: NextFunction) => {
     console.log(req.body);
-
     passport.authenticate('local', (err: any, user: User, info: any) => {
         if (err) {
             return res.status(500).json({ error: 'Internal Server Error' });

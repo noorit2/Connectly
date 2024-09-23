@@ -12,6 +12,8 @@ import {
     getUserCommunitiesWithLimitAndOffset
 } from '../controllers/communitiesController';
 import { upload } from '../services/firebaseBucket';
+import { validateRequest } from '../middlewares/validationMiddleware';
+import { createCommunitySchema, paginationSchema } from '../validation/schemas';
 
 const router = express.Router();
 
@@ -19,8 +21,9 @@ const router = express.Router();
 router.post(
     '/', 
     ensureAuthenticated, 
+    validateRequest({body:createCommunitySchema}),
     upload.single('image'), 
-    (req: Request, res: Response, next: NextFunction) => createCommunity(req, res)
+    (req: Request, res: Response, next: NextFunction) => createCommunity(req, res,next)
 );
 
 // Add member to a community
@@ -38,20 +41,20 @@ router.get(
 
 // Get communities with member count
 router.get(
-    '/with-member-count',
-    (req: Request, res: Response, next: NextFunction) => getCommunitiesWithMemberCount(req, res)
+    '/with-member-count',validateRequest({query:paginationSchema}),
+    (req: Request, res: Response, next: NextFunction) => getCommunitiesWithMemberCount(req, res,next)
 );
 
 // Get all communities with optional search and pagination
 router.get(
-    '/',
-    (req: Request, res: Response, next: NextFunction) => getCommunities(req, res)
+    '/',validateRequest({query:paginationSchema}),
+    (req: Request, res: Response, next: NextFunction) => getCommunities(req, res,next)
 );
 
 // Count total number of communities
 router.get(
     '/count',
-    (req: Request, res: Response, next: NextFunction) => countCommunities(req, res)
+    (req: Request, res: Response, next: NextFunction) => countCommunities(req, res,next)
 );
 
 // Get a community by ID
@@ -68,7 +71,7 @@ router.get(
 
 // Get all communities that user is part of
 router.get(
-    '/:id/communities',
+    '/:id/communities',validateRequest({query:paginationSchema}),
     getUserCommunitiesWithLimitAndOffset
 );
 

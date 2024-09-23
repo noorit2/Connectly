@@ -1,5 +1,5 @@
 // src/server.ts
-import { app, sessionMiddleware } from './app.js';
+import { app, sessionMiddleware } from './app';
 import { Server } from 'socket.io';
 import sharedsession from 'express-socket.io-session';
 import cookieParser from 'cookie-parser';  // Import cookie-parser

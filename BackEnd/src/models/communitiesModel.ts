@@ -1,29 +1,9 @@
 import { Pool } from 'pg';
 import { pool } from '../config/db';
-
-interface Community {
-    chat_id: number;
-    chat_name: string;
-    chat_description: string;
-    chat_image?: string;
-    created_at: Date;
-}
-
-interface CommunityMember {
-    user_id: number;
-    username: string;
-    role: string;
-}
-
-interface CommunityWithCount extends Community {
-    member_count: number;
-}
-
-interface GetCommunitiesResponse {
-    communities: CommunityWithCount[];
-    totalPages: number;
-    totalCount: number;
-}
+import { Community } from "../types/community";
+import { CommunityMember } from "../dtos/CommunityMember";
+import { CommunityWithCount } from "../dtos/CommunityWithCount";
+import { GetCommunitiesResponse } from "../dtos/GetCommunitiesResponse";
 
 const getCommunitiesLimitedOffset = async (limit: number, offset: number): Promise<Community[]> => {
     const response = await pool.query("SELECT * FROM chats WHERE chat_type = 'community' ORDER BY chat_id LIMIT $1 OFFSET $2;", [limit, offset]);

@@ -2,15 +2,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy, IStrategyOptions } from 'passport-local';
 import { userModel } from '../models/userModel'; // Adjust the path if needed
 import bcrypt from 'bcrypt';
-
-// Define the User type if not already defined
-export interface User {
-  id: string;
-  email: string;
-  password: string;
-}
-
-
+import { User } from '../types/user';
 
 // Configure the local strategy
 const strategyOptions: IStrategyOptions = {
