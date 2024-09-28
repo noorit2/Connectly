@@ -8,6 +8,7 @@ import {  useRef, useState } from "react";
 import Box from "../box/Box";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignOut } from '@fortawesome/free-solid-svg-icons'
+import useAppMode from "../../../store/appMode";
 
 function Navbar(props) {
     const {show,scrollY}=props;
@@ -15,6 +16,7 @@ function Navbar(props) {
     const currentUser = useAuthStore((store)=>store.user);
     const navigate = useNavigate();
     const ref = useRef(null);
+
     const logoutHandler = ()=>{
         async function logout(){
         try{
@@ -35,7 +37,12 @@ function Navbar(props) {
         logout();
     }
     
+    const selectionHandler = (value) => {
+        useAppMode.getState().changeMode(value);
+    }
+
    if(!show){
+    if(ref.current)
     ref.current.hidePopover();
    }
 
@@ -71,6 +78,12 @@ function Navbar(props) {
                     <div  className={classes.profile} ref={ref} popover="auto" id="list">
                     <Box as="div" width="mini">
                     <Link to={`/Users/${currentUser?.id}`}><img src={noImage} alt="profile picture"/> <p>@username</p> </Link>
+                    <select onChange={(e)=>selectionHandler(e.currentTarget.value)}>
+                        <option value="default" aria-label="default">Default (system preference) </option>
+                        <option value="light" aria-label="light">Light</option>
+                        <option value="dark" aria-label="dark">Dark</option>
+
+                    </select>
                     <Link to="/" onClick={logoutHandler}><FontAwesomeIcon  width="1.5rem" icon={faSignOut}/><p>Logout</p></Link>
                     </Box>
                     </div>

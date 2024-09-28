@@ -8,8 +8,8 @@
     flex-direction: column;
     gap: 0.4rem;
     button{
-        background-color: #ff7a7b;
-padding: 0.6rem 0.8rem;
+        background-color: var(--clr-main-800);
+padding: 0.8rem 1rem;
 border-radius: 0.5rem;
 transition: all 0.34s ease-in-out;
 color:#fff;
@@ -71,7 +71,8 @@ cursor: pointer;
         visibility: visible;
         transition: ease-in .5s all;
       }
-      img:hover{
+      
+      img:hover,div:has(p:hover) img{
         filter: blur(1px);
         border-color: #bcbbbb;
         transition: ease-in .5s all;
@@ -84,7 +85,7 @@ cursor: pointer;
         font-family: Poppins;
     }
     button:hover{
-        background-color: #ec7373;
+        background-color: var(--clr-main-900);
     }
     button:disabled{
         background-color: #888da1;

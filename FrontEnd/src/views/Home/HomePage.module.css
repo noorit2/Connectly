@@ -1,11 +1,18 @@
+
 .first {
     text-align: center;
     padding-top: 10%;
-    background-image: url(../../assests/images/roundBrush.svg);
     background-repeat: no-repeat;
     background-position: center left 20%;
     background-size: contain;
     height: fit-content;
+    background-image: url(../../assests/images/stars.svg), url(../../assests/images/roundBrush.svg);
+
+    background-size: cover,contain;
+    background-repeat: no-repeat;
+    background-blend-mode: soft-light,color-dodge;
+
+    backdrop-filter: blur(2px);
     .bkg{
         position: relative;
         height: 100%;
@@ -14,8 +21,17 @@
         float: left;
         overflow: hidden;
     }
+    svg{
+      color: var(--clr-main-800);
+      width: 100vw;
+      path{
+        color: var(--clr-main-800);
+        width: 100vw;
+      }
+    }
     img{
         width: 100vw;
+      
     }
 }
 @keyframes fill {
@@ -36,11 +52,9 @@
 }
 .first > h1{
 font-size: 4rem;
-color: #062335;
 margin-bottom: 1rem;
 }
 .typewriter h1 {
-    color: #062335;
     font-family: monospace;
     overflow: hidden; /* Ensures the content is not revealed until the animation */
     border-right: .15em solid orange; /* The typwriter cursor */
@@ -54,7 +68,7 @@ margin-bottom: 1rem;
   }
   .first a{
     display: block;
-    background-color:#ff7a7b ;
+    background-color:var(--clr-main-800) ;
     text-decoration: none;
     margin-top: 4rem;
     padding: 0.5rem 1rem;
@@ -89,9 +103,12 @@ animation: grow 0.3s ease-in-out forwards;
   }
 
   .second{
-    height: 50vh;
+    background-color: var(--clr-main-600);
+    padding: 1rem;
+    padding-top: 2rem;
     text-align: center;
     animation: appear 1.8s ease-in forwards   ;
+    background-color: var(--bcg-gradient-2);
     * {
       padding: 0;
       margin: 0;
@@ -105,7 +122,7 @@ animation: grow 0.3s ease-in-out forwards;
       width: 100%;
     }
     a{
-      background-color:#ff7a7b ;
+      background-color:var(--clr-main-800) ;
       text-decoration: none;
       padding: 0.3rem 1rem;
       border-radius: 1rem;
@@ -115,13 +132,14 @@ animation: grow 0.3s ease-in-out forwards;
       position: relative;
       z-index: 3;
     }
-    > p{
+    > h2{
       font-weight: 600;
-      color: #062335;
-      margin: 0.6rem auto;
+      margin: 1.5rem auto;
       font-size: 1.5rem;
     }
   }
+
+
 @keyframes appear {
   0%{
     opacity: 0;
@@ -145,7 +163,6 @@ animation: grow 0.3s ease-in-out forwards;
     font-family: 'Lato', sans-serif;
     font-size: 35px;
     line-height: 40px;
-    color: #ecf0f1;
     div{
       font-weight: 600;
       overflow: hidden;
@@ -165,7 +182,7 @@ animation: grow 0.3s ease-in-out forwards;
     }
     div::after,div::before{
       top: 0;
-      color: #ff7a7b;
+      color: var(--clr-main-800);
       font-size: 42px;
       line-height: 40px;
       
@@ -179,7 +196,7 @@ animation: grow 0.3s ease-in-out forwards;
     p{
       display: inline;
       float: left;
-      margin: 0; color: #062335;
+      margin: 0;
     }
     ul{
       margin-top: 0;
@@ -195,9 +212,9 @@ animation: grow 0.3s ease-in-out forwards;
       animation-iteration-count: infinite;
     }
     ul li{
-      line-height:40px;
+      line-height:44px;
       margin:0;
-      color: #ff7a7b;
+      color: var(--clr-main-800);
     }
   }
   @-webkit-keyframes opacity {

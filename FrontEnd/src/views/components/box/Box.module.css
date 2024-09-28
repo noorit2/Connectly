@@ -1,7 +1,7 @@
 .box{
     height: fit-content;
     border-radius: 1rem;
-    background-color: #fff;
+    background-color: var(--clr-main-700);
     padding: 1rem 0.8rem;
 }
 .box.mini{

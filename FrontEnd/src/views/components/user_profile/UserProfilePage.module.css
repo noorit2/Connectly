@@ -20,14 +20,15 @@
   .card-front,
   .card-back {
     position: absolute;
+    z-index: 5;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
   }
   
   .card-front {
-    background: rgb(255,122,123);
-    background: linear-gradient(180deg, rgba(255,122,123,1) 54%, rgba(231,200,200,1) 100%);
+    background: var(--clr-main-800);
+    background: linear-gradient(180deg, var(--clr-main-800) 54%, var(--clr-main-600) 100%);
 
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
@@ -40,6 +41,9 @@
     font-size: 24px;
     transform: rotateY(0deg);
     flex-direction: column;
+    h1{
+      color: #fff;
+    }
     *{
       padding: 0;
       margin: 0;
@@ -54,8 +58,10 @@
       }
       button{
         all: unset;
-        border: 1px solid #8845e1;
-        color: #8845e1;
+        border: 1px solid var(--clr-secondary-400);
+        color: var(--clr-secondary-400);
+        filter: contrast(1.4);
+        font-family: var(--ff-Light);
         cursor: pointer;
         padding: 0.2rem 0.8rem;
         font-size: 0.8rem;
@@ -105,8 +111,8 @@
   }
   
   .card-back {
-    background: rgb(255,122,123);
-    background: linear-gradient(180deg, rgba(255,122,123,1) 54%, rgba(231,200,200,1) 100%);
+    background: var(--clr-main-800);
+    background: linear-gradient(180deg, var(--clr-main-800) 54%, var(--clr-main-600) 100%);
 
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     color: #fff;

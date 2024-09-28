@@ -15,6 +15,7 @@ import useAuthStore from "../../store/auth";
 import CustomInput from "../components/customInput/CustomInput";
 import noImage from "../../assests/images/noImage.png";
 import toast from "react-hot-toast";
+import { fetchCommunities } from "./models/Communities";
 function CommunitiesPage() {
   const [searchParams] = useSearchParams();
   const submit = useSubmit();
@@ -48,6 +49,15 @@ function CommunitiesPage() {
       setimage(null); // Reset the image preview if needed
   }
   }, [action]);
+
+  useEffect(() => {
+    async function fetch() {
+      let f1 = fetchCommunities(0,0,null,"1");
+      let f2= fetchCommunities(0,0,null,"1");
+      let [l,l2] = await Promise.all([f1,f2]);
+    }
+    fetch();
+  }, []);
 
   //handle pagination logic
   const currentPage = parseInt(searchParams.get("page")) || 1;

@@ -40,6 +40,7 @@ function EditProfileModal(props) {
             />
             <p
             className={image === "/static/media/no-profile-picture-icon.b137df7bb70fab6f393e.jpg"?classes.show:""}
+            onClick={() => inputRef.current.click()}
             >
               +
             </p>

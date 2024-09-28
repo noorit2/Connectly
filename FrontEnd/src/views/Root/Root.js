@@ -1,16 +1,18 @@
 import { Outlet, redirect, useNavigation } from "react-router-dom";
 import Navbar from "../components/navbar/Navbar";
-import classes from "./Root.module.css";
+import "./Root.css";
 import { useEffect, useState } from "react";
 import { axiosProtected } from "../../config/axios";
 import useAuthStore from "../../store/auth";
 import Loader from "../components/loader/Loader";
 import {Toaster} from "react-hot-toast";
+import useAppMode from "../../store/appMode";
 function Root() {
     const navigation = useNavigation();
     const [show, setShow] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
-    
+    const theme = useAppMode((store)=>store.mode);
+    console.log(theme);
     const controlNavbar = () => {
       if (window.scrollY > lastScrollY) { // if scroll down hide the navbar
         
@@ -49,13 +51,11 @@ function Root() {
 
     return ( 
       <>
-        <div className={classes.body}>
-        <div>
+        <div className={"rootBody" + " " + (theme ? theme : "default")}>
          <Navbar show={show} scrollY={lastScrollY}/>
-         </div>
-         <main   className={classes.main}>
+         <main   className="rootMain">
           { navigation.state === "loading" ?
-          <div className={classes.loader}><Loader/></div>
+          <div className="rootLoader"><Loader/></div>
             :      <Outlet/>
           }
         <Toaster

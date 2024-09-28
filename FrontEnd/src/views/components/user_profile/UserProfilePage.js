@@ -19,8 +19,8 @@ function UserProfilePage() {
 
   const { data, error } = useQuery(userQuery(params.userId));
   const user = data?.data.user;
-  const numOfJoinedCommunities = data?.data.joinedCommunitiesCount.total;
-  const numOfConnectedUser = data?.data.connectedCount.total;
+  const numOfJoinedCommunities = data?.data.joinedCommunitiesCount;
+  const numOfConnectedUser = data?.data.connectedCount;
   const isSubmitting = fetcher.state === "submitting";
   console.log(data);
 

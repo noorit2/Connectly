@@ -10,9 +10,14 @@ code {
     monospace;
 }
 :root{
-  --BoldStatement: PoppinsMedium;
-  --ThinStatement: PoppinsThin;
-  --LightStatement: PoppinsLight;
+  --ff-Bold: PoppinsMedium;
+  --ff-Regular:Poppins;
+  --ff-Thin: PoppinsThin;
+  --ff-Light: PoppinsLight;
+  --fs-400:0.9275rem;
+  --fs-500: 1.25rem;
+  --fs-600:1.625rem;
+  --fs-900: 2.5rem;
 }
 @font-face {
   font-family:PoppinsLight ;
@@ -34,9 +39,20 @@ code {
   font-family: PoppinsBold;
   src: url(./assests/fonts/Poppins-SemiBold.ttf);
 }
-p{
-  font-family: Poppins;
+body{
+  font-family: var(--ff-Light);
 }
-h1,h2,h3,h4,h5{
-  font-family: PoppinsBold;
+p,li,figcaption,label{
+  font-family: var(--ff-Light);
+  text-wrap: pretty;
+  max-width: 65ch;
+}
+
+h1,h2,h3,h4,h5,h6{
+  text-wrap: balance;
+  font-family: var(--ff-Regular) ;
+}
+
+body > :is(header,footer), main, section,article{
+  container-type: inline-size;
 }

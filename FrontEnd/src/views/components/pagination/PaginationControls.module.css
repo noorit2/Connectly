@@ -19,8 +19,7 @@ align-items: center;
     span{
         display: inline-block;
         padding: 0.3rem 0.7rem;
-        border: 1px solid #000;
-        color:#000;
+        border: 1px solid var(--clr-main-700);
     }
     p{
         color: #606060;
